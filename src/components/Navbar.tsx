@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll } from 'framer-motion';
 import { FileText, Menu, X, ArrowUpRight, ShieldCheck, Mail, Sparkles } from 'lucide-react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
 
@@ -10,6 +10,7 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { scrollYProgress } = useScroll();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,7 +27,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
     { label: 'Projects', href: '#projects', id: 'projects' },
     { label: 'Methodology', href: '#methodology', id: 'methodology' },
     { label: 'Credentials', href: '#credentials', id: 'credentials' },
-    { label: 'About', href: '#education', id: 'education' },
+    { label: 'Milestones', href: '#education', id: 'education' },
     { label: 'Contact', href: '#contact', id: 'contact' },
   ];
 
@@ -34,10 +35,15 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? 'bg-finance-indigo/85 backdrop-blur-xl border-b border-finance-teal/25 py-3.5 shadow-institutional'
-          : 'bg-transparent py-6 border-b border-transparent'
+          ? 'bg-finance-indigo/90 backdrop-blur-xl border-b border-finance-teal/25 py-3 shadow-institutional'
+          : 'bg-transparent py-5 border-b border-transparent'
       }`}
     >
+      {/* Refined Global Scroll Progress Indicator */}
+      <motion.div
+        style={{ scaleX: scrollYProgress }}
+        className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-finance-teal via-finance-jade to-finance-brass origin-left pointer-events-none"
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         
         {/* Brand identity */}

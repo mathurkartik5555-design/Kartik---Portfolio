@@ -47,6 +47,18 @@ export interface EducationItem {
   highlights: string[];
 }
 
+export interface CareerTimelineMilestone {
+  step: number;
+  title: string;
+  organization: string;
+  periodOrDate: string;
+  statusBadge: string;
+  scoreOrDetail?: string;
+  description: string;
+  type: 'education' | 'cohort' | 'certification' | 'research' | 'candidacy';
+  note?: string;
+}
+
 export const PORTFOLIO_DATA = {
   personal: {
     name: "Kartik Mathur",
@@ -447,6 +459,82 @@ export const PORTFOLIO_DATA = {
       ]
     }
   ] as EducationItem[],
+
+  careerTimeline: [
+    {
+      step: 1,
+      title: "Completed Class XII — Commerce with Mathematics",
+      organization: "M.M. Public School, Delhi",
+      periodOrDate: "2025",
+      statusBadge: "Graduated",
+      scoreOrDetail: "88% · Ranked 3rd in Class",
+      description: "Established core quantitative foundation across Accountancy, Mathematics, Economics, and Business Studies.",
+      type: "education"
+    },
+    {
+      step: 2,
+      title: "Started Bachelor of Commerce (Honours)",
+      organization: "Vivekananda Institute of Professional Studies (VIPS-TC), Delhi",
+      periodOrDate: "August 2025 – Present (Ongoing)",
+      statusBadge: "Undergraduate Degree",
+      scoreOrDetail: "CGPA: 8.20 / 10",
+      description: "Rigorous curriculum covering Corporate Finance, Advanced Financial Accounting, Business Economics, and Financial Management.",
+      type: "education",
+      note: "Ongoing degree; subsequent research and certification milestones were completed concurrently alongside academic terms."
+    },
+    {
+      step: 3,
+      title: "Joined the Equity Research Cohort",
+      organization: "The Valuation School",
+      periodOrDate: "2025–26 Cohort",
+      statusBadge: "Mentored by Parth Verma",
+      scoreOrDetail: "Completed & Certified",
+      description: "Intensive cohort program focused on fundamental equity research, financial statement analysis, 3-statement financial modelling, and valuation discipline.",
+      type: "cohort"
+    },
+    {
+      step: 4,
+      title: "Cleared NISM Series VIII — Equity Derivatives Certification",
+      organization: "National Institute of Securities Markets (NISM)",
+      periodOrDate: "Test Date: June 28, 2026 · Valid until: June 27, 2029",
+      statusBadge: "Passed Examination",
+      scoreOrDetail: "Score: 70.25 / 100",
+      description: "SEBI-mandated qualification verifying mastery in equity derivatives mechanics, Futures & Options pricing, Options Greeks hedging, and risk management.",
+      type: "certification"
+    },
+    {
+      step: 5,
+      title: "Completed VRL Logistics Ltd. Initiating-Coverage Report",
+      organization: "Academic / Cohort Research Project",
+      periodOrDate: "Dec 2025 – Jul 2026",
+      statusBadge: "Academic Research Initiation",
+      scoreOrDetail: "34 Pages · Integrated Model",
+      description: "Authored an exhaustive 34-page initiating coverage report on VRL Logistics Ltd. Conducted DCF valuation, relative EV/EBIT multiples, DuPont analysis, and peer benchmarking. College/cohort research project, not professional employment experience.",
+      type: "research",
+      note: "College / cohort academic research project (not professional employment experience)."
+    },
+    {
+      step: 6,
+      title: "Cleared NISM Series XV — Research Analyst Certification",
+      organization: "National Institute of Securities Markets (NISM)",
+      periodOrDate: "Test Date: August 5, 2026 · Valid until: August 4, 2029",
+      statusBadge: "Passed Examination",
+      scoreOrDetail: "Score: 61.75 / 100",
+      description: "SEBI-mandated qualification for Research Analysts covering Indian regulatory frameworks, economic analysis, company valuation, and professional ethics.",
+      type: "certification"
+    },
+    {
+      step: 7,
+      title: "Current Status — CFA Level I Candidate",
+      organization: "CFA Institute",
+      periodOrDate: "Active Candidate",
+      statusBadge: "CFA Program Candidate",
+      scoreOrDetail: "Level I Candidate",
+      description: "Active candidate in the globally recognized CFA Program. Registered candidate; not a CFA charterholder.",
+      type: "candidacy",
+      note: "Candidate designation strictly compliant with CFA Institute ethical guidelines."
+    }
+  ] as CareerTimelineMilestone[],
 
   footer: {
     disclaimer: "This portfolio presents personal academic research and project work for educational and professional showcase purposes. Nothing on this website constitutes investment advice, a target price, or a recommendation to buy, sell, or hold any security.",
