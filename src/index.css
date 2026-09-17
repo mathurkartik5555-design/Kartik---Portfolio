@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+/* Custom Institutional Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #171A3A;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #20365F;
+  border-radius: 4px;
+  border: 2px solid #171A3A;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #397C78;
+}
+
+/* Subtle Institutional Financial Coordinate Grid */
+.bg-financial-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(57, 124, 120, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(57, 124, 120, 0.07) 1px, transparent 1px);
+}
+
+.bg-financial-dots {
+  background-size: 24px 24px;
+  background-image: radial-gradient(rgba(101, 184, 155, 0.12) 1px, transparent 1px);
+}
+
+/* Glassmorphic Institutional Surfaces */
+.glass-panel {
+  background: rgba(23, 26, 58, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(57, 124, 120, 0.22);
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel-hover:hover {
+  background: rgba(26, 35, 70, 0.85);
+  border-color: rgba(101, 184, 155, 0.45);
+  box-shadow: 0 16px 36px -10px rgba(18, 59, 70, 0.45), 0 0 20px -2px rgba(101, 184, 155, 0.2);
+}
+
+/* Subtle Shimmer Animation */
+@keyframes subtle-shimmer {
+  0% { opacity: 0.3; transform: translateX(-100%); }
+  50% { opacity: 0.6; }
+  100% { opacity: 0.3; transform: translateX(100%); }
+}
+
+.animate-shimmer {
+  animation: subtle-shimmer 6s infinite ease-in-out;
+}
+
+/* Accessible Focus States */
+a:focus-visible, button:focus-visible {
+  outline: 2px solid #65B89B;
+  outline-offset: 3px;
+}
+
+/* Respect Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
