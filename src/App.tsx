@@ -7,7 +7,6 @@ import { Hero } from './components/Hero';
 import { ResearchIdentity } from './components/ResearchIdentity';
 import { FeaturedResearch } from './components/FeaturedResearch';
 import { FinanceTools } from './components/FinanceTools';
-import { ResearchMethodology } from './components/ResearchMethodology';
 import { Skills } from './components/Skills';
 import { Credentials } from './components/Credentials';
 import { Education } from './components/Education';
@@ -56,7 +55,6 @@ export const App: React.FC = () => {
       'research',
       'vrl-logistics',
       'projects',
-      'methodology',
       'skills',
       'credentials',
       'education',
@@ -100,7 +98,6 @@ export const App: React.FC = () => {
         <ResearchIdentity />
         <FeaturedResearch />
         <FinanceTools />
-        <ResearchMethodology />
         <Skills />
         <Credentials />
         <Education />

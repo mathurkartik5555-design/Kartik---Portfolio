@@ -4,12 +4,13 @@
 
 :root {
   color-scheme: dark;
+  font-feature-settings: 'tnum' 1, 'lnum' 1, 'cv02' 1, 'cv03' 1, 'cv04' 1;
 }
 
 /* Custom Institutional Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
 }
 
 ::-webkit-scrollbar-track {
@@ -19,32 +20,64 @@
 ::-webkit-scrollbar-thumb {
   background: #20365F;
   border-radius: 4px;
-  border: 2px solid #171A3A;
+  border: 1px solid #171A3A;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: #397C78;
 }
 
+/* Institutional Tabular Numeric Precision */
+.tabular-nums {
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
 /* Subtle Institutional Financial Coordinate Grid */
 .bg-financial-grid {
-  background-size: 40px 40px;
+  background-size: 44px 44px;
   background-image: 
-    linear-gradient(to right, rgba(57, 124, 120, 0.07) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(57, 124, 120, 0.07) 1px, transparent 1px);
+    linear-gradient(to right, rgba(57, 124, 120, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(57, 124, 120, 0.08) 1px, transparent 1px);
 }
 
 .bg-financial-dots {
-  background-size: 24px 24px;
+  background-size: 28px 28px;
   background-image: radial-gradient(rgba(101, 184, 155, 0.12) 1px, transparent 1px);
 }
 
-/* Glassmorphic Institutional Surfaces */
+/* Granular Glassmorphism Hierarchy (Tiered Depth System) */
+/* Level 1: Background panels & recessed data zones */
+.glass-level-1 {
+  background: rgba(18, 59, 70, 0.25);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(57, 124, 120, 0.18);
+}
+
+/* Level 2: Primary interactive research dossier cards & feature components */
+.glass-level-2 {
+  background: rgba(23, 26, 58, 0.78);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(57, 124, 120, 0.28);
+  box-shadow: 0 16px 36px -12px rgba(10, 14, 35, 0.5), 0 0 0 1px rgba(57, 124, 120, 0.15);
+}
+
+/* Level 3: Elevated focus modals, sticky overlays & navigation badges */
+.glass-level-3 {
+  background: rgba(18, 59, 70, 0.88);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(101, 184, 155, 0.4);
+  box-shadow: 0 25px 50px -12px rgba(10, 14, 35, 0.75), 0 0 30px -5px rgba(101, 184, 155, 0.2);
+}
+
+/* Standard glass-panel legacy compatibility */
 .glass-panel {
-  background: rgba(23, 26, 58, 0.72);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(57, 124, 120, 0.22);
+  background: rgba(23, 26, 58, 0.76);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(57, 124, 120, 0.26);
 }
 
 .glass-panel-hover {
@@ -52,16 +85,35 @@
 }
 
 .glass-panel-hover:hover {
-  background: rgba(26, 35, 70, 0.85);
-  border-color: rgba(101, 184, 155, 0.45);
-  box-shadow: 0 16px 36px -10px rgba(18, 59, 70, 0.45), 0 0 20px -2px rgba(101, 184, 155, 0.2);
+  background: rgba(26, 35, 70, 0.88);
+  border-color: rgba(101, 184, 155, 0.5);
+  box-shadow: 0 20px 40px -10px rgba(18, 59, 70, 0.5), 0 0 25px -2px rgba(101, 184, 155, 0.22);
+}
+
+/* Liquid Light Shimmer for Magnetic Buttons & Featured Cards */
+@keyframes liquid-sweep {
+  0% {
+    transform: translateX(-150%) skewX(-20deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateX(250%) skewX(-20deg);
+    opacity: 0;
+  }
+}
+
+.animate-liquid-sweep {
+  animation: liquid-sweep 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 /* Subtle Shimmer Animation */
 @keyframes subtle-shimmer {
-  0% { opacity: 0.3; transform: translateX(-100%); }
-  50% { opacity: 0.6; }
-  100% { opacity: 0.3; transform: translateX(100%); }
+  0% { opacity: 0.25; transform: translateX(-100%); }
+  50% { opacity: 0.55; }
+  100% { opacity: 0.25; transform: translateX(100%); }
 }
 
 .animate-shimmer {

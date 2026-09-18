@@ -25,7 +25,6 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
     { label: 'Research', href: '#research', id: 'research' },
     { label: 'Featured: VRL', href: '#vrl-logistics', id: 'vrl-logistics' },
     { label: 'Projects', href: '#projects', id: 'projects' },
-    { label: 'Methodology', href: '#methodology', id: 'methodology' },
     { label: 'Credentials', href: '#credentials', id: 'credentials' },
     { label: 'Milestones', href: '#education', id: 'education' },
     { label: 'Contact', href: '#contact', id: 'contact' },

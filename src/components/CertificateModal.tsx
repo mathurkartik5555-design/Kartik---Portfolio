@@ -61,14 +61,13 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({ certificate,
   }, [certificate, onClose]);
 
   const handleDragEnd = (_: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
-    // If dragged down by more than 100px on mobile, close the modal
     if (info.offset.y > 100) {
       onClose();
     }
   };
 
   return (
-    <AnimatePresence>
+    <AnimatePresence mode="wait">
       {certificate && (
         <motion.div
           role="dialog"
@@ -77,8 +76,8 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({ certificate,
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.25, ease: 'easeOut' }}
-          className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-6 bg-finance-base/90 backdrop-blur-md"
+          transition={{ duration: 0.28, ease: 'easeInOut' }}
+          className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-6 bg-finance-base/90 backdrop-blur-2xl"
           onClick={(e) => {
             if (e.target === e.currentTarget) onClose();
           }}
@@ -89,19 +88,24 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({ certificate,
             dragConstraints={{ top: 0, bottom: 0 }}
             dragElastic={{ top: 0, bottom: 0.6 }}
             onDragEnd={handleDragEnd}
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: 80, opacity: 0 }}
-            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="relative w-full max-w-4xl max-h-[90vh] sm:max-h-[92vh] bg-gradient-to-b from-finance-petrol/95 via-finance-indigo/95 to-finance-base/95 border-t sm:border border-finance-teal/40 rounded-t-3xl sm:rounded-2xl shadow-2xl overflow-hidden flex flex-col"
+            initial={{ scale: 0.94, y: 30, opacity: 0 }}
+            animate={{ scale: 1, y: 0, opacity: 1 }}
+            exit={{ scale: 0.96, y: 20, opacity: 0 }}
+            transition={{
+              type: 'spring',
+              stiffness: 300,
+              damping: 26,
+              mass: 0.5,
+            }}
+            className="relative w-full max-w-4xl max-h-[90vh] sm:max-h-[92vh] bg-gradient-to-b from-finance-petrol/95 via-finance-indigo/95 to-finance-base/98 border-t sm:border border-finance-teal/40 rounded-t-3xl sm:rounded-3xl shadow-2xl overflow-hidden flex flex-col"
           >
             {/* Mobile Drag Handle Indicator */}
             <div className="w-12 h-1.5 bg-finance-teal/50 rounded-full mx-auto my-2.5 sm:hidden" />
 
             {/* Modal Header */}
-            <div className="flex items-center justify-between px-5 sm:px-6 py-3.5 sm:py-4 border-b border-finance-teal/30 bg-finance-base/70">
+            <div className="flex items-center justify-between px-5 sm:px-7 py-4 border-b border-finance-teal/30 bg-finance-base/80">
               <div className="pr-4">
-                <div className="text-[11px] font-mono text-finance-jade uppercase tracking-wider flex items-center gap-1.5 mb-0.5">
+                <div className="text-[11px] font-mono text-finance-jade uppercase tracking-[0.16em] flex items-center gap-1.5 mb-1 font-semibold">
                   <ShieldCheck className="w-3.5 h-3.5 text-finance-jade" />
                   <span>Archival Credential Record · {certificate.issuer}</span>
                 </div>
@@ -115,7 +119,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({ certificate,
                   <a
                     href={certificate.pdfDownload}
                     download
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-medium text-finance-mist hover:text-white bg-finance-petrol/70 hover:bg-finance-teal/30 border border-finance-teal/30 rounded-lg transition-all"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-mono font-medium text-finance-mist hover:text-white bg-finance-petrol/70 hover:bg-finance-teal/35 border border-finance-teal/35 rounded-xl transition-all"
                     title="Download Official Certificate Document (PDF)"
                   >
                     <Download className="w-3.5 h-3.5 text-finance-jade" />
@@ -126,7 +130,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({ certificate,
                 <button
                   ref={closeBtnRef}
                   onClick={onClose}
-                  className="p-2 text-finance-mist hover:text-white bg-finance-petrol/70 hover:bg-finance-teal/30 border border-finance-teal/30 rounded-lg transition-all focus:outline-none focus:ring-2 focus:ring-finance-jade min-h-[44px] min-w-[44px] flex items-center justify-center"
+                  className="p-2.5 text-finance-mist hover:text-white bg-finance-petrol/70 hover:bg-finance-teal/35 border border-finance-teal/35 rounded-xl transition-all focus:outline-none focus:ring-2 focus:ring-finance-jade min-h-[44px] min-w-[44px] flex items-center justify-center"
                   aria-label="Close modal (Escape or Swipe Down)"
                 >
                   <X className="w-5 h-5" />
@@ -135,49 +139,49 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({ certificate,
             </div>
 
             {/* Modal Scrollable Body */}
-            <div className="p-5 sm:p-6 overflow-y-auto space-y-5 sm:space-y-6">
+            <div className="p-5 sm:p-7 overflow-y-auto space-y-6">
               
-              {/* Metadata Highlights Bar */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 bg-finance-base/70 p-3.5 sm:p-4 rounded-xl border border-finance-teal/20 text-xs">
+              {/* Metadata Highlights Bar with Tabular Figures */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3.5 bg-finance-base/80 p-4 rounded-2xl border border-finance-teal/25 text-xs tabular-nums">
                 <div>
-                  <span className="text-[10px] font-mono uppercase text-finance-lavender">Issuing Authority</span>
-                  <div className="font-semibold text-white truncate mt-0.5">{certificate.issuer}</div>
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-finance-lavender">Issuing Authority</span>
+                  <div className="font-semibold text-white truncate mt-1">{certificate.issuer}</div>
                 </div>
                 <div>
-                  <span className="text-[10px] font-mono uppercase text-finance-lavender">Status</span>
-                  <div className="font-semibold text-finance-jade mt-0.5 flex items-center gap-1">
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-finance-lavender">Status</span>
+                  <div className="font-semibold text-finance-jade mt-1 flex items-center gap-1">
                     <CheckCircle2 className="w-3.5 h-3.5" />
                     <span>{certificate.status}</span>
                   </div>
                 </div>
                 <div>
-                  <span className="text-[10px] font-mono uppercase text-finance-lavender">Official Score</span>
-                  <div className="font-semibold text-finance-brass mt-0.5">
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-finance-lavender">Official Score</span>
+                  <div className="font-semibold text-finance-brass mt-1 font-mono">
                     {certificate.score ? certificate.score : 'Certified'}
                   </div>
                 </div>
                 <div>
-                  <span className="text-[10px] font-mono uppercase text-finance-lavender">Issue / Validity</span>
-                  <div className="font-semibold text-white mt-0.5 truncate">
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-finance-lavender">Issue / Validity</span>
+                  <div className="font-semibold text-white mt-1 truncate font-mono">
                     {certificate.validUntil ? `Valid to ${certificate.validUntil}` : certificate.issueDate}
                   </div>
                 </div>
               </div>
 
               {/* High-Resolution Certificate Archival View */}
-              <div className="relative rounded-xl overflow-hidden border border-finance-teal/30 bg-finance-base/90 flex items-center justify-center p-2 sm:p-4 shadow-inner">
+              <div className="relative rounded-2xl overflow-hidden border border-finance-teal/35 bg-finance-base/95 flex items-center justify-center p-3 sm:p-5 shadow-inner">
                 <img
                   src={certificate.imagePreview}
                   alt={`${certificate.title} issued to Kartik Mathur`}
-                  className="max-h-[45vh] sm:max-h-[52vh] w-auto object-contain rounded shadow-lg border border-finance-teal/20"
+                  className="max-h-[45vh] sm:max-h-[52vh] w-auto object-contain rounded-xl shadow-lg border border-finance-teal/25"
                   loading="lazy"
                 />
               </div>
 
               {/* Description & Competencies Covered */}
-              <div className="space-y-3 sm:space-y-4">
+              <div className="space-y-4">
                 <div>
-                  <h4 className="text-xs font-mono uppercase tracking-wider text-finance-lavender mb-1.5">
+                  <h4 className="text-xs font-mono uppercase tracking-[0.16em] text-finance-lavender mb-1.5 font-semibold">
                     Curriculum & Credential Scope
                   </h4>
                   <p className="text-sm text-finance-mist/90 leading-relaxed font-sans">
@@ -186,14 +190,14 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({ certificate,
                 </div>
 
                 <div>
-                  <div className="text-xs font-mono uppercase tracking-wider text-finance-lavender mb-2">
+                  <div className="text-xs font-mono uppercase tracking-[0.16em] text-finance-lavender mb-2 font-semibold">
                     Core Evaluated Competencies & Modules:
                   </div>
-                  <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                  <div className="flex flex-wrap gap-2">
                     {certificate.topics.map((topic) => (
                       <span
                         key={topic}
-                        className="text-xs px-2.5 sm:px-3 py-1 rounded-md bg-finance-petrol/70 text-finance-mist border border-finance-teal/30 font-mono"
+                        className="text-xs px-3 py-1 rounded-lg bg-finance-petrol/70 text-finance-mist border border-finance-teal/30 font-mono"
                       >
                         {topic}
                       </span>
@@ -203,7 +207,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({ certificate,
               </div>
 
               {/* Regulatory Privacy Note */}
-              <div className="text-[11px] font-mono text-finance-lavender/70 border-t border-finance-teal/20 pt-3 flex items-center gap-2">
+              <div className="text-[11px] font-mono text-finance-lavender/70 border-t border-finance-teal/25 pt-4 flex items-center gap-2.5">
                 <ShieldCheck className="w-4 h-4 text-finance-jade shrink-0" />
                 <span>
                   Regulatory Privacy Notice: In accordance with Indian securities compliance guidelines, personal identifiers (PAN and full registration serial numbers) are masked from public display.

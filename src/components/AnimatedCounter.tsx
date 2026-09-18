@@ -1,0 +1,62 @@
+import React, { useEffect, useRef, useState } from 'react';
+import { useInView } from 'framer-motion';
+
+interface AnimatedCounterProps {
+  value: number;
+  decimals?: number;
+  prefix?: string;
+  suffix?: string;
+  duration?: number;
+  className?: string;
+}
+
+export const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
+  value,
+  decimals = 0,
+  prefix = '',
+  suffix = '',
+  duration = 1.4,
+  className = '',
+}) => {
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, margin: '-40px' });
+  const [displayValue, setDisplayValue] = useState<string>(
+    (0).toFixed(decimals)
+  );
+
+  useEffect(() => {
+    if (!isInView) return;
+
+    let startTime: number | null = null;
+    let animationFrameId: number;
+
+    const animate = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / (duration * 1000), 1);
+      
+      // Institutional ease-out-expo curve
+      const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      const current = easeProgress * value;
+
+      setDisplayValue(current.toFixed(decimals));
+
+      if (progress < 1) {
+        animationFrameId = requestAnimationFrame(animate);
+      } else {
+        setDisplayValue(value.toFixed(decimals));
+      }
+    };
+
+    animationFrameId = requestAnimationFrame(animate);
+
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [isInView, value, decimals, duration]);
+
+  return (
+    <span ref={ref} className={`tabular-nums ${className}`}>
+      {prefix}
+      {displayValue}
+      {suffix}
+    </span>
+  );
+};

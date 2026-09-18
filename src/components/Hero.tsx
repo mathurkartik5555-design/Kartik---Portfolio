@@ -4,6 +4,7 @@ import { FileText, ArrowRight, Linkedin, Award, ChevronDown, Check, ArrowUpRight
 import { PORTFOLIO_DATA } from '../data/portfolioData';
 import { HeroScene } from './HeroScene';
 import { MagneticButton } from './MagneticButton';
+import { ParallaxDataLayer } from './ParallaxDataLayer';
 
 export const Hero: React.FC = () => {
   const { personal } = PORTFOLIO_DATA;
@@ -58,6 +59,7 @@ export const Hero: React.FC = () => {
     >
       {/* Subtle Background Micro-Grid & Ambient Atmospheric Glow */}
       <div className="absolute inset-0 bg-financial-grid opacity-25 pointer-events-none -z-10" />
+      <ParallaxDataLayer speed={0.16} />
       <div className="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-finance-petrol/40 via-transparent to-transparent blur-3xl pointer-events-none -z-10" />
       <div className="absolute bottom-1/3 right-1/4 w-[500px] h-[500px] bg-gradient-radial from-finance-teal/15 via-transparent to-transparent blur-3xl pointer-events-none -z-10" />
 
