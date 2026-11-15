@@ -79,14 +79,6 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
             <span>Resume</span>
             <ArrowUpRight className="w-3 h-3 opacity-60" />
           </a>
-
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-finance-base bg-finance-jade hover:bg-finance-jade/90 rounded-xl shadow-glow-jade transition-all focus:outline-none min-h-[40px]"
-          >
-            <Mail className="w-3.5 h-3.5" />
-            <span>Contact</span>
-          </a>
         </div>
 
         {/* Mobile menu toggle */}

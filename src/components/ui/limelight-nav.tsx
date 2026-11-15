@@ -69,7 +69,7 @@ export const LimelightNav: React.FC<LimelightNavProps> = ({
             key={item.id}
             {...(componentProps as any)}
             onClick={() => handleItemClick(item)}
-            className={`relative group px-3.5 py-2 rounded-xl flex items-center gap-2 text-xs font-mono font-medium transition-all duration-250 select-none outline-none focus-visible:ring-1 focus-visible:ring-finance-teal/60 ${
+            className={`relative group px-3 py-1.5 rounded-xl flex items-center gap-1.5 text-xs font-mono font-medium transition-all duration-250 select-none outline-none focus-visible:ring-1 focus-visible:ring-finance-teal/60 whitespace-nowrap ${
               isActive
                 ? "text-white"
                 : "text-finance-mist/75 hover:text-white hover:bg-white/[0.04]"
@@ -110,7 +110,7 @@ export const LimelightNav: React.FC<LimelightNavProps> = ({
 
             {/* Icon */}
             <span
-              className={`relative z-10 transition-transform duration-200 ${
+              className={`relative z-10 transition-transform duration-200 shrink-0 ${
                 isActive ? "text-finance-teal scale-110" : "group-hover:scale-105"
               }`}
             >
@@ -118,7 +118,7 @@ export const LimelightNav: React.FC<LimelightNavProps> = ({
             </span>
 
             {/* Label */}
-            <span className="relative z-10 hidden sm:inline-block tracking-wide">
+            <span className="relative z-10 hidden sm:inline-block tracking-wide whitespace-nowrap">
               {item.label}
             </span>
 
