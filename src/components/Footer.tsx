@@ -1,6 +1,7 @@
 import React from 'react';
-import { Shield, FileText, ArrowUp } from 'lucide-react';
+import { Shield, FileText, ArrowUp, Home, Table, Linkedin, Github, Mail } from 'lucide-react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
+import { GlassDock } from './GlassDock';
 
 export const Footer: React.FC = () => {
   const { footer, personal } = PORTFOLIO_DATA;
@@ -29,6 +30,23 @@ export const Footer: React.FC = () => {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Research Quick-Action Glass Dock */}
+        <div className="flex flex-col items-center justify-center mb-14 py-4">
+          <div className="text-[11px] font-mono uppercase tracking-[0.2em] text-finance-jade mb-3.5 font-semibold">
+            Interactive Institutional Dock
+          </div>
+          <GlassDock
+            items={[
+              { title: "Home Overview", icon: <Home className="w-5 h-5" />, href: "#hero" },
+              { title: "VRL Coverage (PDF)", icon: <FileText className="w-5 h-5 text-finance-teal" />, href: PORTFOLIO_DATA.featuredResearch.pdfUrl },
+              { title: "Financial Model (.xlsx)", icon: <Table className="w-5 h-5 text-finance-brass" />, href: PORTFOLIO_DATA.featuredResearch.excelUrl },
+              { title: "LinkedIn Profile", icon: <Linkedin className="w-5 h-5 text-finance-jade" />, href: personal.linkedin },
+              { title: "GitHub Repositories", icon: <Github className="w-5 h-5 text-white" />, href: personal.github },
+              { title: "Direct Email", icon: <Mail className="w-5 h-5 text-finance-teal" />, href: `mailto:${personal.email}` },
+            ]}
+          />
         </div>
 
         {/* Footer Navigation & Brand Row */}

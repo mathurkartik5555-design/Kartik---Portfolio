@@ -12,6 +12,7 @@ import { Credentials } from './components/Credentials';
 import { Education } from './components/Education';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
+import { PixelCursorTrail } from './components/PixelCursorTrail';
 
 export const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -83,7 +84,7 @@ export const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-finance-base text-finance-mist selection:bg-finance-teal selection:text-white flex flex-col font-sans relative">
-      
+
       {/* Cinematic Institutional Preloader */}
       <AnimatePresence mode="wait">
         {isLoading && (
@@ -91,8 +92,11 @@ export const App: React.FC = () => {
         )}
       </AnimatePresence>
 
+      {/* Ambient Interactive Pixel Cursor Trail */}
+      <PixelCursorTrail enabled={!isLoading} />
+
       <Navbar activeSection={activeSection} />
-      
+
       <main className="flex-1">
         <Hero />
         <ResearchIdentity />

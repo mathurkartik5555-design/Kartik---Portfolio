@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll } from 'framer-motion';
 import { FileText, Menu, X, ArrowUpRight, ShieldCheck, Mail, Sparkles } from 'lucide-react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
+import { LimelightNav } from './ui/limelight-nav';
 
 interface NavbarProps {
   activeSection: string;
@@ -61,30 +62,10 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
           </div>
         </a>
 
-        {/* Desktop Navigation Pill */}
-        <nav className="hidden lg:flex items-center gap-1 bg-finance-petrol/50 border border-finance-teal/25 rounded-full px-3 py-1.5 backdrop-blur-md shadow-inner relative">
-          {navLinks.map((link) => {
-            const isActive = activeSection === link.id;
-            return (
-              <a
-                key={link.label}
-                href={link.href}
-                className={`relative px-3.5 py-1.5 text-xs font-medium rounded-full transition-colors duration-200 ${
-                  isActive ? 'text-white font-semibold' : 'text-finance-mist/75 hover:text-white'
-                }`}
-              >
-                {isActive && (
-                  <motion.div
-                    layoutId="activeNavPill"
-                    className="absolute inset-0 rounded-full bg-finance-teal/35 border border-finance-teal/40 shadow-sm"
-                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                  />
-                )}
-                <span className="relative z-10">{link.label}</span>
-              </a>
-            );
-          })}
-        </nav>
+        {/* Desktop Limelight Navigation Dock shifted to top bar */}
+        <div className="hidden lg:block">
+          <LimelightNav activeId={activeSection} />
+        </div>
 
         {/* Action Buttons */}
         <div className="hidden sm:flex items-center gap-3">

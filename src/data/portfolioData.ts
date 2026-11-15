@@ -3,8 +3,45 @@ export interface ResearchPillar {
   title: string;
   subtitle: string;
   description: string;
+  microSentence: string;
+  microSystemFlow: string[];
   iconName: string;
   metrics: string[];
+}
+
+export interface BusinessEngineStep {
+  step: string;
+  title: string;
+  subtitle: string;
+  detail: string;
+}
+
+export interface ThesisNode {
+  id: string;
+  number: string;
+  title: string;
+  subtitle: string;
+  summary: string;
+  detail: string;
+  metric?: string;
+}
+
+export interface ResearchWorkflowStage {
+  step: string;
+  title: string;
+  headline: string;
+  description: string;
+  deliverables: string[];
+  iconName: string;
+}
+
+export interface CapabilityCluster {
+  id: string;
+  title: string;
+  subtitle: string;
+  iconName: string;
+  primarySkills: string[];
+  expandedSkills: string[];
 }
 
 export interface ProjectItem {
@@ -62,7 +99,8 @@ export interface CareerTimelineMilestone {
 export const PORTFOLIO_DATA = {
   personal: {
     name: "Kartik Mathur",
-    heroTitle: "Aspiring Equity Research Analyst",
+    heroTitle: "Equity Research Analyst",
+    heroSupportingKeywords: "Fundamental Research · Valuation · Financial Modelling · Industry Analysis",
     location: "Delhi, India",
     email: "mathurkartik5555@gmail.com",
     phone: "+91 9953728525",
@@ -71,31 +109,35 @@ export const PORTFOLIO_DATA = {
     github: "https://github.com/mathurkartik5555-design",
     existingSite: "https://kartik-mathur-finance-portfolio.vercel.app/",
     avatarUrl: "/assets/images/kartik_mathur_portrait.png",
-    statusBadge: "Open to entry-level Equity Research, Associate & Internship opportunities",
-    heroSupporting: "Researching businesses, markets, financial statements, and the reasoning behind investment decisions.",
+    statusBadge: "Open to Equity & Private Equity Internships",
+    heroSupporting: "Deconstructing business economics, building linked financial models, and evaluating intrinsic value.",
     heroSecondary: "Research-led. Valuation-focused. Curious about how businesses compound.",
     heroBody: "Exploring businesses, markets, financial models, and the reasoning behind investment decisions.",
-    professionalSummary: "Kartik is an Equity Research Enthusiast Analyst with hands-on project experience in equity research, fundamental analysis, financial modelling, and valuation. He has authored an initiating-coverage report on VRL Logistics Ltd. and built finance-oriented AI tools for earnings-call analysis, derivatives-strategy evaluation, and financial-news intelligence. He is seeking an entry-level Equity Research Analyst, Associate, or Intern opportunity.",
+    professionalSummary: "Kartik is an Equity Research Analyst with hands-on project experience in equity research, fundamental analysis, financial modelling, and valuation. He has authored an initiating-coverage report on VRL Logistics Ltd. and built finance-oriented tools for earnings-call analysis, derivatives-strategy evaluation, and financial-news intelligence. He is seeking an Equity Research Analyst, Associate, or Research Intern opportunity.",
     cfaDesignation: "CFA Level I Candidate",
   },
 
   researchIdentity: {
     headline: "From business understanding to valuation discipline.",
-    shortCopy: "Kartik’s portfolio work brings together business and industry research, financial-statement analysis, valuation frameworks, and technology-assisted research workflows.",
+    shortCopy: "A structured research methodology connecting business unit economics, financial statement forensics, DCF valuation, and modern research intelligence.",
     pillars: [
       {
         id: "fundamental",
         title: "Fundamental Research",
         subtitle: "Unit Economics & Moat",
         description: "Deconstructing business drivers, revenue models, industry dynamics, supply-chain positioning, and competitive advantage across macro cycles.",
+        microSentence: "Deconstructing business drivers, unit economics, and competitive moats across economic cycles.",
+        microSystemFlow: ["BUSINESS", "INDUSTRY", "COMPETITION", "DRIVERS", "THESIS"],
         iconName: "Compass",
-        metrics: ["TAM Sizing", "SWOT & Porter's 5F", "Operating Moat"]
+        metrics: ["TAM Sizing", "Porter's 5 Forces", "Economic Moat"]
       },
       {
         id: "modelling",
         title: "Financial Modelling",
         subtitle: "Three-Statement Integration",
         description: "Constructing linked financial models, working-capital schedules, fixed-asset depreciation, debt schedules, and sensitivity tables in Excel.",
+        microSentence: "Constructing linked 3-statement models, working capital cycles, and sensitivity tables in Excel.",
+        microSystemFlow: ["REVENUE", "EBITDA", "FCF", "DCF"],
         iconName: "BarChart3",
         metrics: ["3-Statement Linking", "Schedule Building", "Scenario Analysis"]
       },
@@ -104,6 +146,8 @@ export const PORTFOLIO_DATA = {
         title: "Valuation Discipline",
         subtitle: "DCF & Relative Frameworks",
         description: "Determining intrinsic enterprise and equity value through rigorous Unlevered DCF, WACC calculation, CAPM, and domestic/global peer multiples.",
+        microSentence: "Determining intrinsic value through Unlevered DCF, WACC sensitivity, and peer trading multiples.",
+        microSystemFlow: ["DCF", "COMPS", "MULTIPLES", "INTRINSIC VALUE"],
         iconName: "Calculator",
         metrics: ["DCF & WACC", "EV/EBIT & EV/Rev", "Peer Comps (5+ Peers)"]
       },
@@ -112,15 +156,61 @@ export const PORTFOLIO_DATA = {
         title: "Market Intelligence",
         subtitle: "NLP & Concall Analysis",
         description: "Augmenting classic financial analysis with AI-assisted concall transcript parsing, management tone tracking, guidance verification, and news aggregation.",
+        microSentence: "Synthesizing earnings call transcripts, management guidance shifts, and market intelligence.",
+        microSystemFlow: ["NEWS", "RESULTS", "CONCALL", "RESEARCH SIGNAL"],
         iconName: "Cpu",
         metrics: ["Concall Parsing", "Tone & Sentiment", "News Intelligence"]
       }
     ] as ResearchPillar[]
   },
 
+  howIResearch: [
+    {
+      step: "01",
+      title: "Business Understanding",
+      headline: "Unit Economics & Economic Moats",
+      description: "Deconstruct revenue streams, customer concentration, cost dynamics, unit economics, and durable competitive advantages.",
+      deliverables: ["Revenue Driver Breakdown", "Economic Moat Audit", "Cost Structure Analysis"],
+      iconName: "Building2"
+    },
+    {
+      step: "02",
+      title: "Industry & Macro Analysis",
+      headline: "Sector Tailwinds & Competitive Forces",
+      description: "Assess total addressable market (TAM), regulatory tailwinds, supply-demand dynamics, and Porter's 5 Forces.",
+      deliverables: ["TAM Market Sizing", "Porter's 5 Forces", "Regulatory Tailwinds"],
+      iconName: "TrendingUp"
+    },
+    {
+      step: "03",
+      title: "Financial Statement Forensics",
+      headline: "Accounting Scrutiny & Cash Conversion",
+      description: "Audit balance sheets, income statements, and cash flows over 5–10 years using DuPont ROE decomposition and working capital analysis.",
+      deliverables: ["Historical 5-10Y Audit", "DuPont Decomposition", "Free Cash Flow Conversion"],
+      iconName: "FileSpreadsheet"
+    },
+    {
+      step: "04",
+      title: "Valuation Framework",
+      headline: "Intrinsic & Relative Enterprise Value",
+      description: "Construct linked three-statement Excel models, Unlevered DCF with WACC sensitivity, and trading peer multiples.",
+      deliverables: ["Linked 3-Statement Model", "DCF Sensitivity Matrix", "Peer Comps Multiples"],
+      iconName: "Calculator"
+    },
+    {
+      step: "05",
+      title: "Investment Thesis Synthesis",
+      headline: "Actionable Research Conclusion",
+      description: "Synthesize findings into an institutional initiating coverage report with clear thesis drivers, catalysts, and downside risks.",
+      deliverables: ["Initiating Coverage Report", "Thesis Catalysts", "Downside Risk Matrix"],
+      iconName: "CheckCircle2"
+    }
+  ] as ResearchWorkflowStage[],
+
   featuredResearch: {
     ticker: "NSE: VRLLOG",
-    title: "VRL Logistics Ltd. — Initiating Coverage",
+    title: "VRL Logistics Ltd.",
+    badgeTitle: "Initiating Coverage",
     subtitle: "The Play of Operating Leverage in Indian Road Logistics",
     cohortBadge: "Equity Research Cohort · The Valuation School",
     mentor: "Parth Verma",
@@ -130,7 +220,7 @@ export const PORTFOLIO_DATA = {
     excelUrl: "/assets/docs/VRL_Logistics_Financial_Model_Kartik_Mathur.xlsx",
     coverImage: "/assets/images/vrl_report_cover.png",
     overview: "Authored an exhaustive 34-page initiating coverage equity research report on VRL Logistics Ltd., examining how transition from volume-chasing to margin-led growth drives operating leverage. Developed integrated financial models, DCF valuation, peer benchmarking against domestic and global logistics leaders, and corporate governance scrutiny.",
-    disclaimer: "This project is an academic and portfolio research exercise. It does not constitute investment advice, a target price, or a recommendation to buy, sell, or hold any security.",
+    disclaimer: "This project is an academic and portfolio research exercise conducted during the Equity Research Cohort at The Valuation School. It does not constitute investment advice, a target price, or a recommendation to buy, sell, or hold any security.",
     keyMetrics: [
       { label: "Report Length", value: "34 Pages", detail: "Comprehensive initiation study" },
       { label: "FY26 Net Revenue", value: "₹3,221 Cr", detail: "Tracked top-line execution" },
@@ -139,6 +229,52 @@ export const PORTFOLIO_DATA = {
       { label: "Indian Logistics TAM", value: "$178B → $429B", detail: "FY20 to FY35F projection" },
       { label: "Debt-Free Fleet", value: "77%", detail: "Fully depreciated asset-heavy fleet" },
     ],
+    businessEngine: [
+      { step: "01", title: "REVENUE", subtitle: "Freight Tariffs & Network Billing", detail: "Pan-India goods transport revenue generated through 1,290+ branches across 28 states." },
+      { step: "02", title: "VOLUME GROWTH", subtitle: "B2B & LTL Tonnage Expansion", detail: "Market share capture from unorganized truckers accelerated by GST compliance." },
+      { step: "03", title: "NETWORK SCALE", subtitle: "Hub-and-Spoke Density", detail: "Established transshipment hubs and ~5,900 vehicle fleet absorb higher route density." },
+      { step: "04", title: "OPERATING LEVERAGE", subtitle: "Fixed Cost Absorption", detail: "Incremental volume routes at low marginal cost, driving dramatic margin throughput." },
+      { step: "05", title: "EBITDA", subtitle: "20.8% Operating Margin", detail: "Operating margin expansion supported by in-house repairs and 77% debt-free fleet." },
+      { step: "06", title: "FCF", subtitle: "Cash Flow Conversion", detail: "Strong operating cash conversion funds disciplined capex without debt stress." },
+    ] as BusinessEngineStep[],
+    thesisNodes: [
+      {
+        id: "fleet-moat",
+        number: "01",
+        title: "Asset-Heavy Competitive Moat",
+        subtitle: "77% Debt-Free Fleet & In-House Workshops",
+        summary: "VRL's dedicated fleet of ~5,900 commercial vehicles with in-house maintenance creates structural cost advantage.",
+        detail: "Unlike asset-light aggregators dependent on volatile spot rates, VRL owns 77% of its fleet debt-free. In-house body-building and tyre retreading facilities lower operating cost per km by 12–15% versus unorganized peers.",
+        metric: "77% Debt-Free"
+      },
+      {
+        id: "operating-leverage",
+        number: "02",
+        title: "Operating Leverage Inflection",
+        subtitle: "Fixed Network Infrastructure Arbitrage",
+        summary: "With transshipment hubs already capitalized, incremental freight tonnage routes directly to operating profit.",
+        detail: "A hub-and-spoke logistics network has high fixed overhead. As branch capacity utilization rises from 65% toward 80%, margin throughput accelerates without commensurate capital expenditure.",
+        metric: "20.8% EBITDA"
+      },
+      {
+        id: "macro-formalization",
+        number: "03",
+        title: "GST & Dedicated Freight Corridor",
+        subtitle: "Structural Tailwinds Favoring Organized LTL",
+        summary: "Indian road-freight TAM expanding from $178B to $429B by FY35 at 6.48% CAGR as formalization drives shift.",
+        detail: "Strict compliance norms, E-way billing, and corporate vendor consolidation systematically shift volumes from unorganized operators to organized players with pan-India network tracking.",
+        metric: "$429B TAM"
+      },
+      {
+        id: "governance-balance-sheet",
+        number: "04",
+        title: "Capital Discipline & Governance Audit",
+        subtitle: "60.2% Promoter Alignment & Zero Pledge",
+        summary: "Promoter-led operating discipline with transparent capital allocation and robust return ratios (ROE 21.0%).",
+        detail: "Comprehensive audit of board independence, auditor tenure, KMP remuneration, and related-party transactions confirmed clean governance posture with conservative balance sheet leverage.",
+        metric: "21.0% ROE"
+      }
+    ] as ThesisNode[],
     peersAnalyzed: [
       { name: "Old Dominion Freight Line (ODFL)", type: "Global Benchmark (US LTL Leader)" },
       { name: "XPO Logistics", type: "Global Freight Network" },
@@ -186,7 +322,7 @@ export const PORTFOLIO_DATA = {
       title: "The Concall — AI Earnings Call Analyzer",
       category: "AI Financial Research Platform",
       headline: "Executive Commentary & Transcript Insights Platform",
-      description: "An AI-powered platform that processes quarterly earnings call transcripts to extract management commentary, financial highlights, guidance shifts, margin dynamics, and Q&A tone analysis to support rapid fundamental research.",
+      description: "An AI-powered platform that processes quarterly earnings call transcripts to extract management commentary, financial highlights, guidance shifts, and Q&A tone analysis for rapid fundamental research.",
       features: [
         "NLP Sentiment Engine: Categorizes quarterly concall guidance into bullish, neutral, and cautious signals.",
         "Executive Insights Extraction: Distills 60+ minute transcripts into structured 2-minute actionable briefs.",
@@ -235,51 +371,137 @@ export const PORTFOLIO_DATA = {
     }
   ] as ProjectItem[],
 
-  methodology: [
-    {
-      step: 1,
-      title: "Understand the Business",
-      headline: "Unit Economics & Moat",
-      description: "Analyze the core business model, value proposition, revenue streams, cost structure, competitive advantage (economic moat), and organizational leadership.",
-      deliverables: ["Value Chain Breakdown", "Moat Evaluation", "Revenue Driver Mapping"]
-    },
-    {
-      step: 2,
-      title: "Study the Industry & Macro Environment",
-      headline: "Sector Tailwinds & Competitive Forces",
-      description: "Examine macroeconomic indicators (GDP, inflation, interest rates, trade policy) and conduct Porter's Five Forces analysis to assess bargaining power and industry profitability.",
-      deliverables: ["Total Addressable Market (TAM)", "Porter's 5 Forces", "Regulatory Tailwinds"]
-    },
-    {
-      step: 3,
-      title: "Analyse Financial Statements",
-      headline: "Historical Quality & Accounting Scrutiny",
-      description: "Audit balance sheets, income statements, and cash flows over 5–10 years. Execute ratio analysis, DuPont decomposition, working capital scrutiny, and cash-flow health checks.",
-      deliverables: ["DuPont ROE Breakdown", "Working Capital Cycle", "Free Cash Flow Conversion"]
-    },
-    {
-      step: 4,
-      title: "Build Forecasts & Valuation Models",
-      headline: "Intrinsic & Relative Enterprise Valuation",
-      description: "Project three-statement models across base, bull, and bear scenarios. Calculate intrinsic value using Unlevered DCF (WACC, terminal value) alongside comparable peer multiples (EV/EBIT, EV/Revenue).",
-      deliverables: ["Linked 3-Statement Excel Model", "DCF Sensitivity Matrix", "Peer Comps Table"]
-    },
-    {
-      step: 5,
-      title: "Evaluate Governance, Risks & Competition",
-      headline: "Capital Allocation & Downside Protection",
-      description: "Scrutinize management quality, promoter pledging, board independence, executive remuneration, related-party transactions, and quantify primary operational and financial risks.",
-      deliverables: ["Promoter & Shareholding Audit", "Board Independence Check", "Risk Matrix (SWOT)"]
-    },
-    {
-      step: 6,
-      title: "Form a Reasoned Research Conclusion",
-      headline: "Rigorous Synthesis & Thesis Articulation",
-      description: "Synthesize fundamental findings into a structured Initiating Coverage report with clear investment rationale, risk factors, and sensitivity scenarios.",
-      deliverables: ["Initiating Coverage Document", "Executive Summary Presentation", "Model Documentation"]
+  technologyInResearch: {
+    headline: "Technology in Research",
+    subheadline: "Amplifying Fundamental Rigor",
+    statement: "Experimenting with AI, automation and modern web technologies to improve how financial research is performed.",
+    formula: [
+      { label: "AI", role: "Transcript Parsing & NLP" },
+      { label: "Automation", role: "Feed Ingestion & Model Pipeline" },
+      { label: "Data", role: "Quantitative Market Signals" },
+      { label: "Research", role: "Fundamental Thesis Discipline" }
+    ],
+    outcome: "Better Research Workflow",
+    beyondTheTerminal: {
+      title: "Beyond the Terminal",
+      subtitle: "Finance → Technology → Experimentation",
+      statement: "A focused experimentation space building custom software tools that accelerate financial analysis without replacing fundamental discipline.",
+      experiments: [
+        {
+          id: "the-concall",
+          title: "The Concall",
+          category: "Earnings Call Intelligence",
+          description: "AI-driven transcript parsing distilling 60-minute earnings calls into 2-minute actionable briefs with sentiment index and guidance tracking.",
+          liveUrl: "https://the-concall.onrender.com/",
+          accent: "#397C78"
+        },
+        {
+          id: "optionforge",
+          title: "OptionForge",
+          category: "Derivatives Risk Analytics",
+          description: "Black-Scholes Options Greeks calculator and multi-leg strategy payoff simulator with probability-of-profit modeling.",
+          liveUrl: "https://preview-chat-adb68929-53bb-43eb-81d5-fd15060237fa.space-z.ai/",
+          accent: "#65B89B"
+        },
+        {
+          id: "news-aggregator",
+          title: "Financial News Aggregator",
+          category: "Real-Time Market Ingestion",
+          description: "Multi-source RSS clustering platform categorizing corporate filings and headlines across sectors for pre-market preparation.",
+          liveUrl: "https://news-aggregator-kartik.onrender.com/",
+          accent: "#C5A46D"
+        }
+      ]
     }
-  ],
+  },
 
+  capabilityClusters: [
+    {
+      id: "research",
+      title: "Research",
+      subtitle: "Company & Industry Discovery",
+      iconName: "Compass",
+      primarySkills: [
+        "Company Analysis",
+        "Industry Analysis",
+        "Competitive Analysis",
+        "Porter's Five Forces"
+      ],
+      expandedSkills: [
+        "Equity Research",
+        "SWOT Analysis",
+        "Macroeconomic Analysis",
+        "Investment Thesis Formulation",
+        "Value Chain Mapping",
+        "Market Sizing (TAM)",
+        "Supply-Chain Positioning",
+        "Corporate Governance Analysis"
+      ]
+    },
+    {
+      id: "financial-analysis",
+      title: "Financial Analysis",
+      subtitle: "Forensics & Financial Statements",
+      iconName: "BarChart3",
+      primarySkills: [
+        "Financial Statements",
+        "Ratio Analysis",
+        "Financial Forecasting",
+        "DuPont Analysis"
+      ],
+      expandedSkills: [
+        "Working Capital Cycles",
+        "Cash Flow Conversion",
+        "Fixed Asset Schedules",
+        "Forensic Accounting Checks",
+        "Debt Schedules",
+        "Historical 5-10Y Auditing",
+        "Operating Margin Forensics"
+      ]
+    },
+    {
+      id: "valuation",
+      title: "Valuation",
+      subtitle: "Intrinsic & Relative Enterprise Value",
+      iconName: "Calculator",
+      primarySkills: [
+        "Discounted Cash Flow (DCF)",
+        "Trading Comps",
+        "WACC & Cost of Equity",
+        "CAPM Framework"
+      ],
+      expandedSkills: [
+        "Relative Valuation",
+        "EV/EBIT & EV/Revenue",
+        "Terminal Growth Modeling",
+        "Multi-Scenario Sensitivity Matrix",
+        "Enterprise Value Triangulation",
+        "Peer Multiples Benchmarking"
+      ]
+    },
+    {
+      id: "market",
+      title: "Market",
+      subtitle: "Market Intelligence & Derivatives",
+      iconName: "Cpu",
+      primarySkills: [
+        "Market Intelligence",
+        "Macroeconomics",
+        "Sector Research",
+        "Equity Derivatives"
+      ],
+      expandedSkills: [
+        "Options Greeks (Delta, Gamma, Theta, Vega)",
+        "Payoff Modeling",
+        "Futures & Options Pricing",
+        "Quarterly Concall Tracking",
+        "Regulatory Filings Audit",
+        "Screener.in & Financial Data Tools"
+      ]
+    }
+  ] as CapabilityCluster[],
+
+  // Legacy skills array maintained for backward compatibility
   skills: [
     {
       category: "Research & Analysis",
@@ -418,10 +640,38 @@ export const PORTFOLIO_DATA = {
         "Portfolio Risk Profiling",
         "Financial Products Evaluation"
       ]
+    },
+    {
+      id: "cfa-investing-simulator",
+      title: "Investing Simulator Challenge 2026",
+      issuer: "CFA Institute · Powered by AmplifyME",
+      subtitle: "Simulated Institutional Multi-Asset Trading & Portfolio Management",
+      issueDate: "October 8, 2026",
+      status: "Challenge Completed",
+      score: "100% Flow Execution · 0% Fat Finger Errors",
+      credentialDescription: "Completed the CFA Institute ICAN Investing Simulator Challenge (AmplifyME). Rotated across Sell-Side Investment Banking (Market Making) and Buy-Side Asset Management managing a simulated ~$20M institutional multi-asset book with real-time macro flow execution.",
+      topics: [
+        "100% First Flow Confirmation (Market Making Execution)",
+        "0% Fat Finger Errors across 76 real-time executions",
+        "Dual-Role: Buy-Side Asset Management & Sell-Side IB",
+        "Disciplined Multi-Asset Exposure: 50% Cash / 50% Equity Book",
+        "Live Market Equities: HSBC, BABA, BP, VW, MSFT"
+      ]
     }
   ] as CertificateItem[],
 
   education: [
+    {
+      id: "cfa",
+      degree: "CFA Level I Candidate",
+      institution: "CFA Institute",
+      period: "Active Candidate",
+      gradeBadge: "CFA Program Candidate",
+      highlights: [
+        "Pursuing the global CFA program covering Financial Statement Analysis, Equity Valuation, Corporate Issuers, Fixed Income, Derivatives, Alternative Investments, and Ethical & Professional Standards.",
+        "Disciplined focus on institutional-grade valuation frameworks and fiduciary ethics."
+      ]
+    },
     {
       id: "bcom",
       degree: "Bachelor of Commerce (Honours) — B.Com (H)",
@@ -432,7 +682,7 @@ export const PORTFOLIO_DATA = {
       highlights: [
         "Core focus in Corporate Finance, Advanced Accounting, Financial Management, and Business Economics.",
         "Recipient of the Investment Products & Wealth Management certification (FinX × CIEL × VIPS-TC).",
-        "Actively applying theoretical finance concepts to hands-on equity research, company valuation, and financial modelling."
+        "Applying theoretical corporate finance to hands-on equity research, company valuation, and financial modelling."
       ]
     },
     {
@@ -444,18 +694,7 @@ export const PORTFOLIO_DATA = {
       gradeBadge: "88% · Ranked 3rd in Class",
       highlights: [
         "Ranked 3rd in Class across the entire Commerce Stream.",
-        "Built a strong quantitative foundation in Accountancy, Mathematics, Economics, and Business Studies."
-      ]
-    },
-    {
-      id: "cfa",
-      degree: "CFA Level I Candidate",
-      institution: "CFA Institute",
-      period: "Active Candidate",
-      gradeBadge: "Chartered Financial Analyst Candidate",
-      highlights: [
-        "Pursuing the global CFA program covering Financial Statement Analysis, Equity Valuation, Corporate Issuers, Fixed Income, Derivatives, Alternative Investments, Quantitative Methods, and Ethical & Professional Standards.",
-        "Focus on institutional-grade valuation frameworks and disciplined fiduciary ethics."
+        "Built strong quantitative foundation in Accountancy, Mathematics, Economics, and Business Studies."
       ]
     }
   ] as EducationItem[],
@@ -463,7 +702,7 @@ export const PORTFOLIO_DATA = {
   careerTimeline: [
     {
       step: 1,
-      title: "Completed Class XII — Commerce with Mathematics",
+      title: "Class XII — Commerce with Mathematics",
       organization: "M.M. Public School, Delhi",
       periodOrDate: "2025",
       statusBadge: "Graduated",
@@ -473,30 +712,30 @@ export const PORTFOLIO_DATA = {
     },
     {
       step: 2,
-      title: "Started Bachelor of Commerce (Honours)",
+      title: "Bachelor of Commerce (Honours)",
       organization: "Vivekananda Institute of Professional Studies (VIPS-TC), Delhi",
-      periodOrDate: "August 2025 – Present (Ongoing)",
+      periodOrDate: "Aug 2025 – Present (Ongoing)",
       statusBadge: "Undergraduate Degree",
       scoreOrDetail: "CGPA: 8.20 / 10",
       description: "Rigorous curriculum covering Corporate Finance, Advanced Financial Accounting, Business Economics, and Financial Management.",
       type: "education",
-      note: "Ongoing degree; subsequent research and certification milestones were completed concurrently alongside academic terms."
+      note: "Ongoing degree; research and certification milestones completed concurrently alongside academic terms."
     },
     {
       step: 3,
-      title: "Joined the Equity Research Cohort",
+      title: "Equity Research Cohort",
       organization: "The Valuation School",
       periodOrDate: "2025–26 Cohort",
       statusBadge: "Mentored by Parth Verma",
       scoreOrDetail: "Completed & Certified",
-      description: "Intensive cohort program focused on fundamental equity research, financial statement analysis, 3-statement financial modelling, and valuation discipline.",
+      description: "Intensive cohort program focused on fundamental equity research, financial statement forensics, 3-statement financial modelling, and valuation discipline.",
       type: "cohort"
     },
     {
       step: 4,
-      title: "Cleared NISM Series VIII — Equity Derivatives Certification",
+      title: "NISM Series VIII — Equity Derivatives",
       organization: "National Institute of Securities Markets (NISM)",
-      periodOrDate: "Test Date: June 28, 2026 · Valid until: June 27, 2029",
+      periodOrDate: "Jun 2026 · Valid until Jun 2029",
       statusBadge: "Passed Examination",
       scoreOrDetail: "Score: 70.25 / 100",
       description: "SEBI-mandated qualification verifying mastery in equity derivatives mechanics, Futures & Options pricing, Options Greeks hedging, and risk management.",
@@ -504,20 +743,20 @@ export const PORTFOLIO_DATA = {
     },
     {
       step: 5,
-      title: "Completed VRL Logistics Ltd. Initiating-Coverage Report",
+      title: "VRL Logistics Ltd. Initiating-Coverage Report",
       organization: "Academic / Cohort Research Project",
       periodOrDate: "Dec 2025 – Jul 2026",
-      statusBadge: "Academic Research Initiation",
+      statusBadge: "Initiating Coverage",
       scoreOrDetail: "34 Pages · Integrated Model",
-      description: "Authored an exhaustive 34-page initiating coverage report on VRL Logistics Ltd. Conducted DCF valuation, relative EV/EBIT multiples, DuPont analysis, and peer benchmarking. College/cohort research project, not professional employment experience.",
+      description: "Authored an exhaustive 34-page initiating coverage report on VRL Logistics Ltd. Conducted DCF valuation, relative EV/EBIT multiples, DuPont analysis, and peer benchmarking.",
       type: "research",
-      note: "College / cohort academic research project (not professional employment experience)."
+      note: "Cohort academic research project (not professional employment experience)."
     },
     {
       step: 6,
-      title: "Cleared NISM Series XV — Research Analyst Certification",
+      title: "NISM Series XV — Research Analyst",
       organization: "National Institute of Securities Markets (NISM)",
-      periodOrDate: "Test Date: August 5, 2026 · Valid until: August 4, 2029",
+      periodOrDate: "Aug 2026 · Valid until Aug 2029",
       statusBadge: "Passed Examination",
       scoreOrDetail: "Score: 61.75 / 100",
       description: "SEBI-mandated qualification for Research Analysts covering Indian regulatory frameworks, economic analysis, company valuation, and professional ethics.",
@@ -525,7 +764,7 @@ export const PORTFOLIO_DATA = {
     },
     {
       step: 7,
-      title: "Current Status — CFA Level I Candidate",
+      title: "CFA Level I Candidate",
       organization: "CFA Institute",
       periodOrDate: "Active Candidate",
       statusBadge: "CFA Program Candidate",

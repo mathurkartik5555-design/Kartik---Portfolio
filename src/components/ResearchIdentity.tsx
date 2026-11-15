@@ -39,7 +39,7 @@ export const ResearchIdentity: React.FC = () => {
       <ParallaxDataLayer speed={0.12} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Section Header with Generous Typography */}
         <motion.div
           initial={{ opacity: 0, x: -25 }}

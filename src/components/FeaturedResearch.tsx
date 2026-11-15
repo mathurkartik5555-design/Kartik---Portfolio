@@ -19,6 +19,9 @@ import {
 } from 'lucide-react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
 import { MagneticButton } from './MagneticButton';
+import { RadialGlowButton } from './RadialGlowButton';
+import { ScrollDissolveReveal } from './ScrollDissolveReveal';
+import { LiquidGlass } from './LiquidGlass';
 import { SpotlightCard } from './SpotlightCard';
 import { AnimatedCounter } from './AnimatedCounter';
 import { ParallaxDataLayer } from './ParallaxDataLayer';
@@ -123,14 +126,8 @@ export const FeaturedResearch: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-8">
         
-        {/* Academic Project Label & Header with Sequential Wipes */}
-        <motion.div
-          initial={{ opacity: 0, x: -25 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-4xl mb-16 sm:mb-20"
-        >
+        {/* Academic Project Label & Header with ScrollDissolveReveal */}
+        <ScrollDissolveReveal className="max-w-4xl mb-16 sm:mb-20">
           {/* Explicit Academic Attribution */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-finance-petrol/70 border border-finance-teal/40 text-xs font-mono text-finance-jade mb-5 shadow-sm">
             <Building2 className="w-3.5 h-3.5 text-finance-jade" />
@@ -160,7 +157,7 @@ export const FeaturedResearch: React.FC = () => {
             <span className="text-finance-teal">·</span>
             <span>{featuredResearch.date}</span>
           </div>
-        </motion.div>
+        </ScrollDissolveReveal>
 
         {/* Sequential Metric Reveal Cards with Cursor-Tracking Spotlights */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5 mb-20 sm:mb-24">
@@ -403,15 +400,14 @@ export const FeaturedResearch: React.FC = () => {
               </div>
 
               <div className="flex flex-col gap-3">
-                <MagneticButton
-                  variant="primary"
+                <RadialGlowButton
                   href={featuredResearch.pdfUrl}
                   download="VRL_Logistics_Initiating_Coverage_Report_Kartik_Mathur.pdf"
-                  showArrow
-                  className="w-full !py-4"
+                  className="w-full !py-4 flex items-center justify-center gap-2 text-sm font-semibold text-white shadow-xl"
                 >
-                  Download Coverage Report (PDF)
-                </MagneticButton>
+                  <Download className="w-4 h-4 text-finance-jade" />
+                  <span>Download Coverage Report (PDF)</span>
+                </RadialGlowButton>
 
                 <MagneticButton
                   variant="secondary"

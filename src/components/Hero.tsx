@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { FileText, ArrowRight, Linkedin, Award, ChevronDown, Check, ArrowUpRight } from 'lucide-react';
+import { FileText, ArrowRight, Linkedin, Github, Mail, Phone, Award, ChevronDown, Check, ArrowUpRight } from 'lucide-react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
 import { HeroScene } from './HeroScene';
 import { MagneticButton } from './MagneticButton';
+import { RadialGlowButton } from './RadialGlowButton';
+import { SocialFlipButton } from './SocialFlipButton';
+import { LiquidGlass } from './LiquidGlass';
 import { ParallaxDataLayer } from './ParallaxDataLayer';
 
 export const Hero: React.FC = () => {
@@ -79,18 +82,21 @@ export const Hero: React.FC = () => {
             className="lg:col-span-7 flex flex-col items-start max-w-xl xl:max-w-2xl"
           >
             
-            {/* Availability Tag */}
-            <motion.div
-              variants={itemVariants}
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-finance-petrol/70 border border-finance-teal/30 text-finance-mist mb-6 shadow-sm backdrop-blur-md"
-            >
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-finance-jade opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-finance-jade"></span>
-              </span>
-              <span className="text-xs font-mono tracking-tight text-finance-mist/90">
-                {personal.statusBadge}
-              </span>
+            {/* Availability Tag with LiquidGlass */}
+            <motion.div variants={itemVariants} className="mb-6">
+              <LiquidGlass
+                intensity="medium"
+                glowColor="rgba(47, 230, 222, 0.25)"
+                className="!rounded-full px-4 py-1.5 inline-flex items-center gap-2.5"
+              >
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-finance-jade opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-finance-jade"></span>
+                </span>
+                <span className="text-xs font-mono tracking-tight text-finance-mist/95">
+                  {personal.statusBadge}
+                </span>
+              </LiquidGlass>
             </motion.div>
 
             {/* Candidate Name: 72–112px desktop, 44–60px mobile */}
@@ -129,14 +135,11 @@ export const Hero: React.FC = () => {
               variants={itemVariants}
               className="flex flex-wrap items-center gap-3 w-full sm:w-auto"
             >
-              {/* Primary: View Featured Research */}
-              <MagneticButton
-                variant="primary"
-                href="#vrl-logistics"
-                showArrow
-              >
+              {/* Primary: View Featured Research — Radial Glow Button */}
+              <RadialGlowButton href="#vrl-logistics">
                 View Featured Research
-              </MagneticButton>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </RadialGlowButton>
 
               {/* Secondary: Explore Projects */}
               <MagneticButton
@@ -180,6 +183,44 @@ export const Hero: React.FC = () => {
               >
                 <Linkedin className="w-4 h-4 text-finance-teal" />
               </MagneticButton>
+            </motion.div>
+
+            {/* 3D Social Flip Channels */}
+            <motion.div
+              variants={itemVariants}
+              className="mt-6 flex flex-wrap items-center gap-3 pt-3 border-t border-finance-teal/15 w-full sm:w-auto"
+            >
+              <span className="text-[11px] font-mono uppercase tracking-widest text-finance-lavender/70">
+                Direct Channels:
+              </span>
+              <SocialFlipButton
+                items={[
+                  {
+                    letter: "In",
+                    icon: <Linkedin className="w-4 h-4 text-white" />,
+                    label: "LinkedIn Profile",
+                    href: personal.linkedin,
+                  },
+                  {
+                    letter: "Gh",
+                    icon: <Github className="w-4 h-4 text-white" />,
+                    label: "GitHub Repositories",
+                    href: personal.github,
+                  },
+                  {
+                    letter: "Em",
+                    icon: <Mail className="w-4 h-4 text-white" />,
+                    label: "Direct Email",
+                    href: `mailto:${personal.email}`,
+                  },
+                  {
+                    letter: "Ph",
+                    icon: <Phone className="w-4 h-4 text-white" />,
+                    label: "Direct Phone Call",
+                    href: `tel:${personal.phone}`,
+                  },
+                ]}
+              />
             </motion.div>
 
           </motion.div>
