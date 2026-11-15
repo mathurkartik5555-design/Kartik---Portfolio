@@ -178,6 +178,102 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({ certificate,
                 />
               </div>
 
+              {/* Special AmplifyME Simulation Results Dashboard */}
+              {certificate.id === 'cfa-investing-simulator' && (
+                <div className="p-5 sm:p-6 rounded-2xl bg-finance-base/90 border border-finance-teal/35 space-y-5">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pb-4 border-b border-finance-teal/25">
+                    <div>
+                      <div className="text-[11px] font-mono text-finance-jade uppercase tracking-wider font-semibold">
+                        Simulation Performance Results · 91 Participants
+                      </div>
+                      <div className="text-sm sm:text-base font-display font-bold text-white">
+                        CFA Institute ICAN Challenge — AmplifyME Benchmark Results
+                      </div>
+                    </div>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <a
+                        href="/assets/certificates/AmplifyME_Asset_Management_Results.pdf"
+                        download="Kartik_Mathur_AmplifyME_Asset_Management.pdf"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-finance-petrol text-xs font-mono text-finance-mist hover:text-white border border-finance-teal/30 hover:border-finance-jade/50 transition-all"
+                      >
+                        <Download className="w-3.5 h-3.5 text-finance-jade" />
+                        <span>Asset Mgmt PDF</span>
+                      </a>
+                      <a
+                        href="/assets/certificates/AmplifyME_Investment_Bank_Results.pdf"
+                        download="Kartik_Mathur_AmplifyME_Investment_Bank.pdf"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-finance-petrol text-xs font-mono text-finance-mist hover:text-white border border-finance-teal/30 hover:border-finance-brass/50 transition-all"
+                      >
+                        <Download className="w-3.5 h-3.5 text-finance-brass" />
+                        <span>Investment Bank PDF</span>
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {/* Sell-Side Card */}
+                    <div className="p-4 rounded-xl bg-finance-petrol/60 border border-finance-teal/30 space-y-3">
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs font-mono uppercase tracking-wider text-finance-teal font-semibold">
+                          Sell-Side · Investment Banking
+                        </span>
+                        <span className="text-xs font-mono font-bold text-finance-jade bg-finance-base/80 px-2.5 py-0.5 rounded border border-finance-teal/30">
+                          Role Score: 56%
+                        </span>
+                      </div>
+                      <div className="grid grid-cols-2 gap-2 text-xs font-mono">
+                        <div className="bg-finance-base/70 p-2.5 rounded-lg border border-finance-teal/20">
+                          <span className="text-finance-lavender text-[10px] block">Flow Execution (FFC)</span>
+                          <span className="text-white font-bold text-sm text-finance-jade">100%</span>
+                        </div>
+                        <div className="bg-finance-base/70 p-2.5 rounded-lg border border-finance-teal/20">
+                          <span className="text-finance-lavender text-[10px] block">Fat Finger Errors</span>
+                          <span className="text-white font-bold text-sm text-finance-jade">0% (Zero)</span>
+                        </div>
+                        <div className="bg-finance-base/70 p-2.5 rounded-lg border border-finance-teal/20">
+                          <span className="text-finance-lavender text-[10px] block">Commission Generated</span>
+                          <span className="text-white font-bold text-sm text-finance-brass">$51,350</span>
+                        </div>
+                        <div className="bg-finance-base/70 p-2.5 rounded-lg border border-finance-teal/20">
+                          <span className="text-finance-lavender text-[10px] block">Trades Executed</span>
+                          <span className="text-white font-bold text-sm">76 Orders</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Buy-Side Card */}
+                    <div className="p-4 rounded-xl bg-finance-petrol/60 border border-finance-teal/30 space-y-3">
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs font-mono uppercase tracking-wider text-finance-brass font-semibold">
+                          Buy-Side · Asset Management
+                        </span>
+                        <span className="text-xs font-mono font-bold text-finance-brass bg-finance-base/80 px-2.5 py-0.5 rounded border border-finance-teal/30">
+                          Role Score: 44%
+                        </span>
+                      </div>
+                      <div className="grid grid-cols-2 gap-2 text-xs font-mono">
+                        <div className="bg-finance-base/70 p-2.5 rounded-lg border border-finance-teal/20">
+                          <span className="text-finance-lavender text-[10px] block">Portfolio Book Value</span>
+                          <span className="text-white font-bold text-sm text-finance-jade">$19.80M</span>
+                        </div>
+                        <div className="bg-finance-base/70 p-2.5 rounded-lg border border-finance-teal/20">
+                          <span className="text-finance-lavender text-[10px] block">Risk Mgmt (BSRM)</span>
+                          <span className="text-white font-bold text-sm text-finance-jade">68%</span>
+                        </div>
+                        <div className="bg-finance-base/70 p-2.5 rounded-lg border border-finance-teal/20">
+                          <span className="text-finance-lavender text-[10px] block">Allocation Strategy</span>
+                          <span className="text-white font-bold text-xs">50.7% Cash / 49.3% Eq</span>
+                        </div>
+                        <div className="bg-finance-base/70 p-2.5 rounded-lg border border-finance-teal/20">
+                          <span className="text-finance-lavender text-[10px] block">Traded Equities</span>
+                          <span className="text-white font-bold text-xs truncate">MSFT, BP, HSBC, BABA, VW</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
               {/* Description & Competencies Covered */}
               <div className="space-y-4">
                 <div>

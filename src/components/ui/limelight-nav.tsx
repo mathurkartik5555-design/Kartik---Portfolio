@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Home, FileText, TrendingUp, Cpu, Award, Mail } from "lucide-react";
+import { Home, FileText, TrendingUp, Cpu, Award, Mail, Layers } from "lucide-react";
 
 export interface NavItem {
   id: string;
@@ -22,7 +22,8 @@ const defaultNavItems: NavItem[] = [
   { id: "hero", icon: <Home className="w-4 h-4" />, label: "Home", href: "#hero" },
   { id: "research", icon: <FileText className="w-4 h-4" />, label: "Research", href: "#research" },
   { id: "vrl-logistics", icon: <TrendingUp className="w-4 h-4" />, label: "VRL Model", href: "#vrl-logistics" },
-  { id: "skills", icon: <Cpu className="w-4 h-4" />, label: "Skills", href: "#skills" },
+  { id: "projects", icon: <Cpu className="w-4 h-4" />, label: "AI Tools", href: "#projects" },
+  { id: "skills", icon: <Layers className="w-4 h-4" />, label: "Skills", href: "#skills" },
   { id: "credentials", icon: <Award className="w-4 h-4" />, label: "Credentials", href: "#credentials" },
   { id: "contact", icon: <Mail className="w-4 h-4" />, label: "Contact", href: "#contact" },
 ];

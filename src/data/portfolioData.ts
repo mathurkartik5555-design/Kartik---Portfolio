@@ -649,13 +649,16 @@ export const PORTFOLIO_DATA = {
       issueDate: "October 8, 2026",
       status: "Challenge Completed",
       score: "100% Flow Execution · 0% Fat Finger Errors",
+      imagePreview: "/assets/certificates/CFA_AmplifyME_Investing_Simulator_2026.jpg",
+      pdfDownload: "/assets/certificates/AmplifyME_Asset_Management_Results.pdf",
       credentialDescription: "Completed the CFA Institute ICAN Investing Simulator Challenge (AmplifyME). Rotated across Sell-Side Investment Banking (Market Making) and Buy-Side Asset Management managing a simulated ~$20M institutional multi-asset book with real-time macro flow execution.",
       topics: [
-        "100% First Flow Confirmation (Market Making Execution)",
-        "0% Fat Finger Errors across 76 real-time executions",
-        "Dual-Role: Buy-Side Asset Management & Sell-Side IB",
-        "Disciplined Multi-Asset Exposure: 50% Cash / 50% Equity Book",
-        "Live Market Equities: HSBC, BABA, BP, VW, MSFT"
+        "Sell-Side Investment Banking: 56% Score · 100% First Flow Confirmation (FFC)",
+        "Zero Operational Errors: 0% Fat Finger Errors across 76 real-time executions",
+        "Buy-Side Asset Management: ~$19.8M Portfolio Value Managed",
+        "Risk Containment: 68% Buy-Side Risk Management (BSRM) with ~50% Cash Preservation",
+        "Live Market Equities: HSBC, Alibaba (BABA), BP, Volkswagen (VW), Microsoft (MSFT)",
+        "Market Making: $51,350 Commission Generated across 63 Exchange & 13 Chat Trades"
       ]
     }
   ] as CertificateItem[],
