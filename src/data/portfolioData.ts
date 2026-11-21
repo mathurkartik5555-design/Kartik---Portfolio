@@ -107,7 +107,7 @@ export const PORTFOLIO_DATA = {
     phoneDisplay: "+91 99537 28525",
     linkedin: "https://www.linkedin.com/in/kartik-mathur-finance/",
     github: "https://github.com/mathurkartik5555-design",
-    existingSite: "https://kartik-mathur-finance-portfolio.vercel.app/",
+    existingSite: "https://kartik-mathur-portfolio.netlify.app/",
     avatarUrl: "/assets/images/kartik_mathur_portrait.png",
     statusBadge: "Open to Equity & Private Equity Internships",
     heroSupporting: "Deconstructing business economics, building linked financial models, and evaluating intrinsic value.",
